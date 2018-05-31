@@ -29,9 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Connect the Recycler View to our Adapter
     final NameAdapter nameAdapter = new NameAdapter(this);
-
-    // TODO: When ready uncomment the line below
-//    recyclerView.setAdapter(nameAdapter);
+    recyclerView.setAdapter(nameAdapter);
     nameAdapter.addName();
     nameAdapter.addName();
     nameAdapter.addName();
