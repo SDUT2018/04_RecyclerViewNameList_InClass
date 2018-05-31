@@ -42,13 +42,17 @@ public class NameAdapter extends RecyclerView.Adapter<NameAdapter.NameViewHolder
   }
 
   public void addName() {
-    mNames.add(getRandomName());
-    notifyDataSetChanged();
+    mNames.add(0, getRandomName());
+    //notifyDataSetChanged();
+    notifyItemInserted(0);
+    notifyItemRangeChanged(0, mNames.size());
   }
 
   private void deleteName(int position) {
     mNames.remove(position);
-    notifyDataSetChanged();
+//    notifyDataSetChanged();
+    notifyItemRemoved(position);
+    notifyItemRangeChanged(0, mNames.size());
   }
 
   @NonNull
