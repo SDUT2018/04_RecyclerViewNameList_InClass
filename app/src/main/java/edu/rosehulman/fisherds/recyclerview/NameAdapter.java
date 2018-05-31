@@ -46,6 +46,11 @@ public class NameAdapter extends RecyclerView.Adapter<NameAdapter.NameViewHolder
     notifyDataSetChanged();
   }
 
+  private void deleteName(int position) {
+    mNames.remove(position);
+    notifyDataSetChanged();
+  }
+
   @NonNull
   @Override
   public NameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -72,6 +77,13 @@ public class NameAdapter extends RecyclerView.Adapter<NameAdapter.NameViewHolder
 
     public NameViewHolder(View itemView) {
       super(itemView);
+      itemView.setOnLongClickListener(new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View v) {
+          deleteName(getAdapterPosition());
+          return false;
+        }
+      });
       mNameTextView = itemView.findViewById(R.id.name);
       mDescriptionTextView = itemView.findViewById(R.id.description);
     }
